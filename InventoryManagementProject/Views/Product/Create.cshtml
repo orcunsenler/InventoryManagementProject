@@ -1,0 +1,45 @@
+﻿@model Product
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Product</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label>Name</label>
+            <input asp-for="ProductName" class="form-control" />
+            <span asp-validation-for="ProductName" class="text-bg-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-bg-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UnitInStock"></label>
+            <input asp-for="UnitInStock" class="form-control" />
+            <span asp-validation-for="UnitInStock" class="text-bg-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="UnitPrice"></label>
+            <input asp-for="UnitPrice" class="form-control" />
+            <span asp-validation-for="UnitPrice" class="text-bg-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CategoryId"></label>
+            <select asp-for="CategoryId" asp-items="ViewBag.v1" class="custom-select">
+                <option value="">Choose Category</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="text-bg-danger"></span>
+        </div>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-primary" style="width:200px">Create</button>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-primary" style="width:200px">
+            Back to List
+        </a>
+    </div>
+
+</form>

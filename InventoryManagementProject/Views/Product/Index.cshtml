@@ -1,0 +1,51 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Product>
+
+<h1>Product List</h1>
+<table class="table table-boarded">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Unit In Stock
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Category Name
+        </th>
+        <th>
+            Delete
+        </th>
+        <th>
+            Update
+        </th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ProductId</td>
+            <td>@x.ProductName</td>
+            <td>@x.Description</td>
+            <td>@x.UnitInStock</td>
+            <td>@x.UnitPrice</td>
+            <td>@x.Category.CategoryName</td>
+
+            <td><a href="/Product/Delete/@x.ProductId" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Product/Edit/@x.ProductId" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index", new {page}))
+<a href="/Product/Create/" class="btn btn-primary">New Product</a>
+

@@ -1,0 +1,38 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Category List</h1>
+<br />
+<table class="table table-boarded">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Category Name
+        </th>
+        <th>
+            Delete
+        </th>
+        <th>
+            Update
+        </th>
+    </tr>
+    @foreach(var x in Model)
+    {
+        <tr>
+            <td>@x.CategoryId</td>
+            <td>@x.CategoryName</td>
+            <td><a href="/Category/Delete/@x.CategoryId" class="btn btn-danger">Delete</a></td>
+            <td><a href="/Category/Edit/@x.CategoryId" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}))
+<a href="/Category/Create/" class="btn btn-primary">New Category</a>
+
